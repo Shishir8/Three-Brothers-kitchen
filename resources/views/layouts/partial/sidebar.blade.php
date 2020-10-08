@@ -28,6 +28,12 @@
               <p>Categories</p>
             </a>
           </li>
+          <li class="{{ Request::is('admin/item*') ? 'active': '' }}">
+         <a class="nav-link" href="{{ route('item.index') }}">
+              <i class="material-icons">library_books</i>
+              <p>Items</p>
+            </a>
+          </li>
           
           <li class="nav-item ">
             <a class="nav-link" href="./tables.html">

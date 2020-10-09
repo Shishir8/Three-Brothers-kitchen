@@ -7,34 +7,25 @@
         <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
 
         <title>Mamma's Kitchen</title>
+        @toastr_css
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+  
 
-        <style>
-            @foreach($sliders as $key=>$slider)
-            
-                .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{ $key + 1 }}) .item
-                {
-                    background: url({{ asset('uploads/slider/'.$slider->image) }});
-                    background-size: cover;
-                }
-            @endforeach
-        </style>
-    
+        @include('headerslidebar')
 
-        <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-        <script src="{{ asset('frontend/js/jquery-1.11.2.min.js')}}"></script>
-        
-        <script type="text/javascript" src="{{asset('frontend/js/jquery.flexslider.min.js')}}"></script>
+        <script src="{{ asset('frontend/js/jquery-1.11.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.flexslider.min.js') }}"></script>
         <script type="text/javascript">
             $(window).load(function() {
                 $('.flexslider').flexslider({
@@ -66,9 +57,8 @@
             }
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
-
-
     </head>
+    
     <body data-spy="scroll" data-target="#template-navbar">
 
         <!--== 4. Navigation ==-->
@@ -132,7 +122,7 @@
                                 <h2 class="section-content-title">About us</h2>
                                 <p class="section-content-para">
                                     Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
+                                </p> 
                                 <p class="section-content-para">
                                     beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
                                 </p>
@@ -145,7 +135,7 @@
 
 
         <!--==  7. Afordable Pricing  ==-->
-        <section id="pricing" class="pricing">
+        <section id="menu-list" class="menu-list">
             <div id="w">
                 <div class="pricing-filter">
                     <div class="pricing-filter-wrapper">
@@ -153,13 +143,12 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="section-header">
-                                        <h2 class="pricing-title">Affordable Pricing</h2>
+                                        <h2 class="pricing-title">Our Menu List In Affordable Pricing</h2>
                                         <ul id="filter-list" class="clearfix">
                                             <li class="filter" data-filter="all">All</li>
-                                            <li class="filter" data-filter=".breakfast">Breakfast</li>
-                                            <li class="filter" data-filter=".special">Special</li>
-                                            <li class="filter" data-filter=".desert">Desert</li>
-                                            <li class="filter" data-filter=".dinner">Dinner</li>
+                                            @foreach($categories as $category)
+                                                <li class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }} <span class="badge">{{ $category->items->count() }}</span></li>
+                                            @endforeach
                                         </ul><!-- @end #filter-list -->
                                     </div>
                                 </div>
@@ -169,148 +158,38 @@
                 </div>
 
                 <div class="container">
-                    <div class="row">  
+                    <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <ul id="menu-pricing" class="menu-price">
-                                <li class="item dinner">
 
-                                    <a href="#">
-                                        <img src="images/food1.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc text-center">
-                                            <span>
-                                                <h3>Tomato Curry</h3>
-                                                Natalie &amp; Justin Cleaning by Justin Younger
-                                            </span>
-                                        </div>
-                                    </a>
-                                        
-                                    <h2 class="white">$20</h2>
-                                </li>
-
-                                <li class="item breakfast">
-
-                                    <a href="#">
-                                        <img src="images/food2.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Prawn Dish</h3>
-                                                Lorem ipsum dolor sit amet
-                                            </span>
-                                        </div>
-                                    </a>
-                                        
-                                    <h2 class="white">$20</h2>
-                                </li>
-                                <li class="item desert">
-
-                                    <a href="#">
-                                        <img src="images/food3.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Salad Dish</h3>
-                                                Consectetur adipisicing elit, sed do eiusmod
-                                            </span>
-                                        </div>
-                                    </a>
-                                        
-                                    <h2 class="white">$18</h2>
-                                </li>
-                                <li class="item breakfast special">
-
-                                    <a href="#">
-                                        <img src="images/food4.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Prawn Dish</h3>
-                                                Tempor incididunt ut labore et dolore
-                                            </span>
-                                        </div>
-                                    </a>
-                                        
-                                    <h2 class="white">$15</h2>
-                                </li>
-                                <li class="item breakfast">
-
-                                    <a href="#">
-                                        <img src="images/food5.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Vegetable Dish</h3>
-                                                Magna aliqua. Ut enim ad minim veniam
-                                            </span>
-                                        </div>
-                                    </a>
-                                        
-                                    <h2 class="white">$20</h2>
-                                </li>
-                                <li class="item dinner special">
-
-                                    <a href="#">
-                                        <img src="images/food6.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Chicken Dish</h3>
-                                                Quis nostrud exercitation ullamco laboris
-                                            </span>
-                                        </div>
-                                    </a>
-
-                                    <h2 class="white">$22</h2>
-                                </li>
-                                <li class="item desert">
-
-                                    <a href="#">
-                                        <img src="images/food7.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Vegetable Noodles</h3>
-                                                Nisi ut aliquip ex ea commodo
-                                            </span>
-                                        </div>
-                                    </a>
-
-                                    <h2 class="white">$32</h2>
-                                </li>
-                                <li class="item dinner">
-
-                                    <a href="#">
-                                        <img src="images/food8.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Special Salad</h3>
-                                                Duis aute irure dolor in reprehenderit
-                                            </span>
-                                        </div>
-                                    </a>
-
-                                    <h2 class="white">$38</h2>
-                                </li>
-                                <li class="item desert special">
-
-                                    <a href="#">
-                                        <img src="images/food9.jpg" class="img-responsive" alt="Food" >
-                                        <div class="menu-desc">
-                                            <span>
-                                                <h3>Ice-cream</h3>
-                                                Excepteur sint occaecat cupidatat non
-                                            </span>
-                                        </div>
-                                    </a>
-                                    
-                                    <h2 class="white">$38</h2>
-                                </li>  
+                                @foreach($items as $item)
+                                    <li class="item" id="{{ $item->category->slug }}">
+                                        <a href="#">
+                                            <img src="{{ asset('uploads/item/'.$item->image) }}" class="img-responsive" alt="Item" style="height: 300px; width: 369px;" >
+                                            <div class="menu-desc text-center">
+                                                    <span>
+                                                        <h3>{{ $item->name }}</h3>
+                                                        {{ $item->description }}
+                                                    </span>
+                                            </div>
+                                        </a>
+                                        <h2 class="white">${{ $item->price }}</h2>
+                                    </li>
+                                @endforeach
                             </ul>
 
                             <!-- <div class="text-center">
                                     <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
                             </div> -->
 
-                        </div>   
+                        </div>
                     </div>
                 </div>
 
-            </div> 
+            </div>
         </section>
+
+
 
 
         <!--== 8. Great Place to enjoy ==-->
@@ -748,7 +627,7 @@
 
         <!--== 15. Reserve A Table! ==-->
         <section id="reserve" class="reserve">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/reserve_black.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_black.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row dis-table">
@@ -766,45 +645,48 @@
 
 
         <section class="reservation">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/reserve_color.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/reserve_color.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class=" section-content">
                         <div class="row">
                             <div class="col-md-5 col-sm-6">
-                                <form class="reservation-form" method="post" action="reserve.php">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
-                                        </div>
-
-                                        <div class="col-md-12 col-sm-12">
-                                            <button type="submit" id="submit" name="submit" class="btn btn-reservation">
-                                                <span><i class="fa fa-check-circle-o"></i></span>
-                                                Make a reservation
-                                            </button>
-                                        </div>
-                                            
+                               
+                        <form class="reservation-form" method="post" action="{{ route('reservation.reserve') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control reserve-form empty iconified" name="name" id="name"
+                                               placeholder="  &#xf007;  Name">
                                     </div>
-                                </form>
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control reserve-form empty iconified" id="email"  placeholder="  &#xf1d8;  e-mail">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone"  placeholder="  &#xf095;  Phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" placeholder="&#xf017;  Time">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  We're listening"></textarea>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <button type="submit" id="submit" name="submit" class="btn btn-reservation">
+                                        <span><i class="fa fa-check-circle-o"></i></span>
+                                        Make a reservation
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
                             </div>
 
                             <div class="col-md-2 hidden-sm hidden-xs"></div>
@@ -925,15 +807,35 @@
         </footer>
 
         
-        <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-        <script type="text/javascript')}}" src="{{asset('frontend/js/jquery.mixitup.min.js')}}" ></script>
+        <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/owl.carousel.min.js' )}}"></script>
+        <script type="text/javascript" src="{{ asset('frontend/js/jquery.mixitup.min.js') }}" ></script>
         <script src="{{asset('frontend/js/wow.min.js')}}"></script>
         <script src="{{asset('frontend/js/jquery.validate.js')}}"></script>
         <script type="text/javascript" src="{{asset('frontend/js/jquery.hoverdir.js')}}"></script>
         <script type="text/javascript" src="{{asset('frontend/js/jQuery.scrollSpeed.js')}}"></script>
         <script src="{{asset('frontend/js/script.js')}}"></script>
-        
+        <script src="{{asset('frontend/js/bootstrap-datetimepicker.min.js')}}"></script>  
+        <script src="{{asset('js/toastr.min.js')}}"></script>
+       
 
+         <script>
+            @if(Session::has('success'))
+            toastr.success("{!!Session::get('success')!!}");
+            @endif
+         </script>
+
+
+        <script>
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: "dd MM yyyy - HH:11 P",
+                    showMeridian: true,
+                    autoclose: true,
+                    todayBtn: true
+                });
+            })
+        </script>
+        
     </body>
 </html>

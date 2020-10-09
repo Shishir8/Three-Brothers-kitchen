@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Contact;
-use App\Item;
-use App\Reservation;
-use App\Slider;
+use App\Models\Category;
+use App\Models\Contact;
+use App\Models\Item;
+use App\Models\Reservation;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $categoryCount = Category::count();
+        $itemCount = Item::count();
+        $sliderCount = Slider::count();
+        return view('admin.dashboard',compact('categoryCount','itemCount','sliderCount'));
     }
 }

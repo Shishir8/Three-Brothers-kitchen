@@ -22,6 +22,12 @@
               <p>Sliders</p>
             </a>
           </li>
+          <li class="{{ Request::is('admin/aboutus*') ? 'active': '' }}">
+        <a class="nav-link" href="{{ route('aboutus.index') }}">
+              <i class="material-icons">library_books</i>
+              <p>Aboutus</p>
+            </a>
+          </li>
           <li class="{{ Request::is('admin/category*') ? 'active': '' }}">
         <a class="nav-link" href="{{ route('category.index') }}">
               <i class="material-icons">content_paste</i>
@@ -39,7 +45,13 @@
           <li class="{{ Request::is('admin/reservation*') ? 'active': '' }}">
          <a class="nav-link" href="{{ route('reservation.index') }}">
               <i class="material-icons">chrome_reader_mode</i>
-              <p>reservations</p>
+              <p>Reservations</p>
+            </a>
+          </li>
+          <li class="{{ Request::is('admin/contact*') ? 'active': '' }}">
+         <a class="nav-link" href="{{ route('contact.index') }}">
+              <i class="material-icons">message</i>
+              <p>Contacts</p>
             </a>
           </li>
 

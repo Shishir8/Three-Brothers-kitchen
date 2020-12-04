@@ -363,14 +363,14 @@ nav.shrink .navbar-toggle {
 /*=================================================
 ||				6. About us
 ==================================================*/
-.about-bg
+/* .about-bg
 {
 	background: url('../images/About-C-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: 85%;
   	background-position-x: 15%;
   	background-position-y: 80%;
-}
+} */
 #about 
 {
 	margin-top: -10px;

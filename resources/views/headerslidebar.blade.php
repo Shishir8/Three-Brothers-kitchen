@@ -7,4 +7,16 @@
                             background-size: cover;
                         }
                     @endforeach
-        </style>
+
+                    @foreach($aboutuss as $key=>$aboutus)
+
+                    .about-bg
+{
+	background: url({{ asset('uploads/aboutus/'.$aboutus->image) }});
+	background-repeat: no-repeat;
+	background-size: 90%;
+  	background-position-x: 15%;
+  	background-position-y: 80%;
+}
+@endforeach
+</style>

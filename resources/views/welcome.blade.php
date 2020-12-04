@@ -73,7 +73,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img id="logo" src="{{ asset('frontend/images/Logo_main.png') }}" class="logo img-responsive">
+                        <img id="logo" src="{{ asset('frontend/images/aaa.jpg') }}" class="logo img-responsive">
                     </a>
                 </div>
 
@@ -110,22 +110,24 @@
 
         <!--== 6. About us ==-->
         <section id="about" class="about">
-            <img src="images/icons/about_color.png" class="img-responsive section-icon hidden-sm hidden-xs">
+            <img src="{{ asset('frontend/images/icons/about_color.png') }}"class="img-responsive section-icon hidden-sm hidden-xs">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row dis-table">
                         <div class="hidden-xs col-sm-6 section-bg about-bg dis-table-cell">
-
+                        @include('headerslidebar')
                         </div>
                         <div class="col-xs-12 col-sm-6 dis-table-cell">
                             <div class="section-content">
                                 <h2 class="section-content-title">About us</h2>
+                                @foreach($aboutuss as $key=>$aboutus)
                                 <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
+                                {{ $aboutus->title }}
                                 </p> 
                                 <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
+                                I am a person who is positive about every aspect of life. There are many things I like to do, to see, and to experience. I like to read, I like to write; I like to think, I like to dream; I like to talk, I like to listen. I like to see the sunrise in the morning, I like to see the moonlight at night;
                                 </p>
+                                @endforeach
                             </div> <!-- /.section-content -->
                         </div>
                     </div> <!-- /.row -->
@@ -194,7 +196,7 @@
 
         <!--== 8. Great Place to enjoy ==-->
         <section id="great-place-to-enjoy" class="great-place-to-enjoy">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_black.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/beer_black.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row dis-table">
@@ -213,7 +215,7 @@
 
         <!--==  9. Our Beer  ==-->
         <section id="beer" class="beer">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/beer_color.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/beer_color.png') }}">
             <div class="container-fluid">
                 <div class="row dis-table">
                     <div class="hidden-xs col-sm-6 dis-table-cell section-bg">
@@ -241,7 +243,7 @@
 
         <!--== 10. Our Breakfast Menu ==-->
         <section id="breakfast" class="breakfast">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/bread_black.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/beer_black.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row dis-table">
@@ -260,7 +262,7 @@
 
         <!--== 11. Our Bread ==-->
         <section id="bread" class="bread">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/bread_color.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/bread_color.png') }}">
             <div class="container-fluid">
                 <div class="row dis-table">
                     <div class="hidden-xs col-sm-6 dis-table-cell section-bg">
@@ -290,7 +292,7 @@
 
         <!--== 12. Our Featured Dishes Menu ==-->
         <section id="featured-dish" class="featured-dish">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/food_black.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/food_black.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row dis-table">
@@ -307,23 +309,25 @@
 
 
 
-
+        
         <!--== 13. Menu List ==-->
         <section id="menu-list" class="menu-list">
             <div class="container">
                 <div class="row menu">
                     <div class="col-md-10 col-md-offset-1 col-sm-9 col-sm-offset-2 col-xs-12">
                         <div class="row">
+                        @foreach($sliders as $key=>$slider)
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="row">
                                     <div class="menu-catagory">
-                                        <h2>Bread</h2>
+                                        <h2>{{ $slider->title }}</h2>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
-                                        <h3 class="menu-title">French Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+                                    <img src="{{ asset('uploads/slider/'.$slider->image) }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">  
+                                        <h3 class="menu-title">{{ $slider->title }}</h3>
+                                        <p class="menu-about">{{ $slider->sub_title }}</p>
 
                                         <div class="menu-system">
                                             <div class="half">
@@ -332,48 +336,14 @@
                                                 </p>
                                             </div>
                                             <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Italian Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Regular Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
+                                                <p class="price">${{ $slider->title }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            @endforeach
+                            <!-- <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="row">
                                     <div class="menu-catagory">
                                         <h2>Drinks</h2>
@@ -381,6 +351,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Regular Tea</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -398,6 +369,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Garlic Tea</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -415,6 +387,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Black Coffee</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -440,6 +413,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Bacon</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -457,6 +431,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Sausage</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -474,6 +449,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Chicken Balls</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -499,6 +475,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Chicken Balls</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -516,6 +493,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Bacon</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -533,6 +511,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
+                                    <img src="{{ asset('frontend/images/cercle4.png') }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">
                                         <h3 class="menu-title">Sausage</h3>
                                         <p class="menu-about">Astronomy compels the soul</p>
 
@@ -548,7 +527,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div id="moreMenuContent"></div>
@@ -565,7 +544,7 @@
         <!--== 14. Have a look to our dishes ==-->
 
         <section id="have-a-look" class="have-a-look hidden-xs">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/food_color.png">
+            <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('frontend/images/icons/food_color.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -575,37 +554,37 @@
                                 <div class="flexslider">
                                     <ul class="slides">
                                         <li>
-                                            <img src="images/menu-gallery/menu1.png" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu1.png') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu2.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu2.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu3.png" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu3.png') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu4.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu4.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu5.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu5.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu6.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu6.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu7.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu7.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu8.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu8.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu9.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu9.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu10.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu10.jpg') }}" />
                                         </li>
                                         <li>
-                                            <img src="images/menu-gallery/menu11.jpg" />
+                                            <img src="{{ asset('frontend/images/menu-gallery/menu11.jpg') }}" />
                                         </li>
                                     </ul>
                                 </div>
@@ -761,8 +740,8 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
                         <div class="row">
-                             <form class="contact-form" method="post" action="contact.php">
-                                
+                            <form class="contact-form" method="post" action="{{ route('contact.send') }}">
+                                @csrf
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name">

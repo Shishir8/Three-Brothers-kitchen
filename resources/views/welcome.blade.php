@@ -316,18 +316,18 @@
                 <div class="row menu">
                     <div class="col-md-10 col-md-offset-1 col-sm-9 col-sm-offset-2 col-xs-12">
                         <div class="row">
-                        @foreach($sliders as $key=>$slider)
+                        @foreach($menus as $key=>$menu)
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="row">
                                     <div class="menu-catagory">
-                                        <h2>{{ $slider->title }}</h2>
+                                        <h2>{{ $menu->menu_title }}</h2>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="menu-item">
-                                    <img src="{{ asset('uploads/slider/'.$slider->image) }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">  
-                                        <h3 class="menu-title">{{ $slider->title }}</h3>
-                                        <p class="menu-about">{{ $slider->sub_title }}</p>
+                                    <img src="{{ asset('uploads/menu/'.$menu->image) }}" class="rounded mx-auto d-block" alt="Girl in a jacket" width="150" height="150">  
+                                        <h3 class="menu-title">{{ $menu->menu_sub_title }}</h3>
+                                        <p class="menu-about">{{ $menu->menu_description }}</p>
 
                                         <div class="menu-system">
                                             <div class="half">
@@ -336,7 +336,7 @@
                                                 </p>
                                             </div>
                                             <div class="half">
-                                                <p class="price">${{ $slider->title }}</p>
+                                                <p class="price">${{ $menu->menu_price }}</p>
                                             </div>
                                         </div>
                                     </div>

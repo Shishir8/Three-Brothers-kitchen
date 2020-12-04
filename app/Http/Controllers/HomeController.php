@@ -5,6 +5,7 @@ use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Aboutus;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,8 @@ class HomeController extends Controller
         $aboutuss = Aboutus::all();
         $categories = Category::all();
         $items = Item::all();
-        return view('welcome',compact('sliders','items','categories','aboutuss'));
+        $menus = Menu::all();
+        return view('welcome',compact('sliders','items','categories','aboutuss','menus'));
         
     }
 }

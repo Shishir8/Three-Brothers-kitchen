@@ -29,6 +29,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'admin'], func
     Route::resource('aboutus','AboutusController');
     Route::resource('category','CategoryController');
     Route::resource('item','ItemController');
+    Route::resource('menu','MenuController');
     Route::get('reservation','ReservationController@index')->name('reservation.index');
     Route::post('reservation/{id}','ReservationController@status')->name('reservation.status');
     Route::delete('reservation/{id}','ReservationController@destory')->name('reservation.destory');

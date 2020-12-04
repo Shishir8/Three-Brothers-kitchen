@@ -48,6 +48,14 @@
               <p>Reservations</p>
             </a>
           </li>
+
+          <li class="{{ Request::is('admin/menu*') ? 'active': '' }}">
+         <a class="nav-link" href="{{ route('menu.index') }}">
+              <i class="material-icons">content_paste</i>
+              <p>Menu</p>
+            </a>
+          </li>
+
           <li class="{{ Request::is('admin/contact*') ? 'active': '' }}">
          <a class="nav-link" href="{{ route('contact.index') }}">
               <i class="material-icons">message</i>
